@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block body %}
+
+<div class="container">
+  <div class="mb-3">
+    <form action="/" method="POST">
+      <h2 class="mt-5">Topics</h2>
+      <select
+        class="form-select my-3"
+        name="topic"
+        aria-label="Default select example"
+      >
+        {% for cat in allLinks %}
+        <option value="{{cat[1]}}">{{cat[0]}}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-outline-light my-3">Submit</button>
+    </form>
+
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Index</th>
+          <th scope="col">Problem Topic</th>
+          <th scope="col">Problem Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pro in problems %}
+
+        <tr>
+          <th scope="row">Problem {{loop.index}}</th>
+          <td>{{qTopic}}</td>
+          <td><a href="{{pro}}">{{pro[42:]}}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock body %}
